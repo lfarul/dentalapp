@@ -1,0 +1,26 @@
+﻿@model Dental_App.ViewModels.AppointmentDetailsViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "AccessDenied";
+}
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <br />
+    <img src="~/Images/Various/assist.jpg" class="rounded mx-auto d-block" height="150" width="135" />
+    <hr />
+    <p class="text-center">Przykro nam @UserManager.GetUserAsync(User).Result.FirstName, ale nie masz uprawnień, aby wyświetlić żądane zasoby.</p>
+
+    <p class="text-center">Proszę się zalogować lub skontaktować z administratorem.</p>
+    <hr />
+    <br />
+    <input type="button" onclick="history.go(-1)" value="Tak, loguję" class="btn btn-outline-primary" />
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Nie, dziękuję</a>
+</body>
+</html>

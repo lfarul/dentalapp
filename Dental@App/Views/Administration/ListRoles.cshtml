@@ -1,0 +1,54 @@
+﻿@model IEnumerable<IdentityRole>
+@using Microsoft.AspNetCore.Identity;
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<h4>Utworzone role </h4>
+<hr />
+
+@if (Model.Any())
+{
+    <a class="btn btn-dark" style="width:auto" asp-action="CreateRole" asp-controller="Administration">Dodaj nową rolę</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Powrót</a>
+    <br />
+    <br />
+    foreach (var role in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+
+                Role Id: @role.Id
+
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.Name</h5>
+            </div>
+            <div class="card-footer">
+                <form asp-action="DeleteRole" asp-route-id="@role.Id" method="post">
+
+                    <a asp-action="EditRole" asp-controller="Administration"
+                       asp-route-id="@role.Id" class="btn btn-outline-primary btn-sm">Edytuj</a> <!--tutaj przekazuje Id roli którą edytuję-->
+                    <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Czy na pewno chcesz usunąć rolę: @role.Name ?')">Usuń</button>
+                </form>
+            </div>
+        </div>
+
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            Brak ról do wyświetlenia
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Stwórz nową rolę
+            </h5>
+            <a class="btn btn-primary" style="width:auto" asp-action="CreateRole" asp-controller="Administration">Stwórz rolę</a>
+        </div>
+    </div>
+}
+

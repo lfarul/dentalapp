@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Appointment>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Doctor Appointment";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">Dzień dobry @UserManager.GetUserAsync(User).Result.FirstName</h1>
+    <p class="lead">Podsumowanie wszystkich wizyt</p>
+    <hr class="my-4">
+    <p>
+        Na dzień @DateTime.Today.ToShortDateString() jest w przychodni łącznie zaplanowanych wizyt: @Model.Count().
+        Spośród nich zakończyło się: @Model.Count(i => i.AppointmentStart < DateTime.Now).
+        Do realizacji pozostało: @Model.Count(i => i.AppointmentStart > DateTime.Now).
+        Najbliższa wizyta odbędzie się: @Model.Where(i => i.AppointmentStart >= DateTime.Now).Min(i => i.AppointmentStart). Jeżeli chcesz zmienić datę
+        lub godzinę wizyty skorzystaj z opcji edycji. Pamiętaj, że możesz zmienić tylko te wizyty, których termin jeszcze nie upłynął.
+    </p>
+    <br />
+    <p class="lead">
+        <a class="btn btn-outline-primary btn-lg" asp-controller="Appointment" asp-action="GetAllAppointments"
+           role="button">Moje wizyty</a>
+    </p>
+</div>

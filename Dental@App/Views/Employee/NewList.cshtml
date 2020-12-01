@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Employee>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@{
+    ViewBag.Title = "Employee List";
+}
+
+
+@if (SignInManager.IsSignedIn(User) && !(User.IsInRole("Admin")))
+{
+    <h4>Wybierz lekarza @UserManager.GetUserAsync(User).Result.FirstName</h4>
+    <hr />
+    <br />
+
+    @foreach (var employee in Model)
+    {
+        var photoPath = "~/Images/" + (employee.PhotoPath ?? "img_6.jpg");
+
+
+        <div class="card mb-3" style="max-width: 740px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@employee.Specialty</h5>
+                        <h5 class="card-title">lek. @employee.FirstName @employee.LastName</h5>
+                        <p class="text-justify">
+                            @employee.Description
+                        </p>
+                        <form>
+                            <a asp-controller="Appointment" asp-action="Appointment" asp-route-id="@employee.EmployeeID" class="btn btn-outline-primary m-1" method="get">Umów wizytę</a>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Powrót</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+else
+
+{
+    <h4>Wybierz lekarza</h4>
+    <hr />
+    <br />
+
+    @foreach (var employee in Model)
+    {
+        var photoPath = "~/Images/" + (employee.PhotoPath ?? "img_6.jpg");
+
+
+        <div class="card mb-3" style="max-width: 740px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@employee.Specialty</h5>
+                        <h5 class="card-title">lek. @employee.FirstName @employee.LastName</h5>
+                        <p class="text-justify">
+                            @employee.Description
+                        </p>
+                        <form>
+                            <a asp-controller="Appointment" asp-action="Appointment" asp-route-id="@employee.EmployeeID" class="btn btn-outline-primary m-1" method="get">Umów wizytę</a>
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Powrót</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}
+
+

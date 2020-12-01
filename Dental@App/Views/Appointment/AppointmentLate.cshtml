@@ -1,0 +1,26 @@
+﻿@model Dental_App.ViewModels.AppointmentDetailsViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "AppointmentLate";
+}
+
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <br />
+    <img src="~/Images/Various/assist.jpg" class="rounded mx-auto d-block" height="150" width="135" />
+    <hr />
+    <p class="text-center">Przykro nam @UserManager.GetUserAsync(User).Result.FirstName, ale nie możesz zarezerwować wizyty z datą wsteczną.</p>
+
+    <p class="text-center">Czy chcesz wybrać inny termin ?</p>
+    <hr />
+    <br />
+    <input type="button" onclick="history.go(-1)" value="Tak, zmieniam" class="btn btn-outline-primary" />
+    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Nie, dziękuję</a>
+</body>
+</html>

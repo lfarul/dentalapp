@@ -1,0 +1,253 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Grand Royale</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy;@DateTime.Today.ToShortDateString() | Dental Bydgoszcz | ul. Gdańska 21 | telefon: 347-764-238 | dental@klinika.pl | NIP: 977 4246 76
+    </div>
+
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@RenderSection("Scripts", required: false)
+
+
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Przychodnia Dental</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-lightr" asp-controller="Home" asp-action="About">O nas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+
+                @RenderBody()
+
+            </main>
+        </div>
+    </body>
+</html>
+
+}
+
+@if (SignInManager.IsSignedIn(User) && !(User.IsInRole("Admin")) && !(User.IsInRole("Lekarz")))
+{
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Przychodnia Dental</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-lightr" asp-controller="Home" asp-action="About">O nas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link thead-warning" asp-controller="Employee" asp-action="NewList">Umów wizytę</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Appointment" asp-action="ReportPatient">Podsumowanie</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Appointment" asp-action="MyAppointment">Moje wizyty</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </body>
+
+}
+
+
+@if (SignInManager.IsSignedIn(User) && (User.IsInRole("Admin")))
+{
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Przychodnia Dental</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-lightr" asp-controller="Home" asp-action="About">O nas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Appointment" asp-action="ReportAdmin">Podsumowanie</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Appointment" asp-action="GetAllAppointments">Wszystkie wizyty</a>
+                            </li>
+                            <div class="btn-group">
+                                <button class="btn btn-dark btn-group-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Panel administratora
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-controller="Employee" asp-action="NewList">Umów wizytę</a>
+                                    <div class="dropdown-divider">Na skróty</div>
+                                    <a class="dropdown-item" asp-controller="Administration" asp-action="CreateRole">Dodaj rolę</a>
+                                    <div class="dropdown-divider">Na skróty</div>
+                                    <a class="dropdown-item" asp-controller="Administration" asp-action="ListRoles">Pokaż role</a>
+                                    <div class="dropdown-divider">Na skróty</div>
+                                    <a class="dropdown-item" asp-controller="Administration" asp-action="ListUsers">Pokaż użytkowników</a>
+                                    <div class="dropdown-divider">Na skróty</div>
+                                    <a class="dropdown-item" asp-controller="Employee" asp-action="List">Pokaż pracowników</a>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </body>
+
+}
+
+@if (SignInManager.IsSignedIn(User) && (User.IsInRole("Lekarz")))
+{
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Przychodnia Dental</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-lightr" asp-controller="Home" asp-action="About">O nas</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Home" asp-action="Contact">Kontakt</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Employee" asp-action="NewList">Umów wizytę</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Appointment" asp-action="ReportDoctor">Podsumowanie</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link thead-light" asp-controller="Appointment" asp-action="DoctorAppointment">Moje wizyty</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="container">
+
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </body>
+
+}
+
+
+@if (IsSectionDefined("site"))
+
+{
+
+    @RenderSection("site", required: true);
+
+}

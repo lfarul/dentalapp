@@ -1,0 +1,44 @@
+﻿@model Dental_App.ViewModels.HomeDetailsViewModel
+
+@{
+    ViewBag.Title = "Employee Details";
+    var photoPath = "~/Images/" + (Model.Employee.PhotoPath ?? "img_6.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.FirstName @Model.Employee.LastName</h1>
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" />
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src=" " />
+                <h4>Lekarz ID: @Model.Employee.EmployeeID</h4>
+                <h4>Imie: @Model.Employee.FirstName</h4>
+                <h4>Nazwisko: @Model.Employee.LastName</h4>
+                <h4>Specjalizacja: @Model.Employee.Specialty</h4>
+                <h4>Email: @Model.Employee.Email</h4>
+                <h4>Opis: @Model.Employee.Description</h4>
+            </div>
+
+            <div class="card-footer text-center">
+                <a asp-controller="Employee" asp-action="List" class="btn btn-outline-secondary">Powrót</a>
+                <a asp-controller="Employee" asp-action="Edit" asp-route-id="@Model.Employee.EmployeeID" class="btn btn-outline-primary">Edytuj</a>
+                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@Model.Employee.EmployeeID" class="btn btn-outline-danger"
+                   onclick="return confirm('Czy na pewno chcesz usunąć lekarza: @Model.Employee.EmployeeID ?')">Usuń</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section site {
+    <script src="~/js/site.js"></script>
+}
+
+
+

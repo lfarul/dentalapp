@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Employee>
+
+
+@{
+    ViewBag.Title = "Employee List";
+}
+
+<h4>Wykaz pracowników</h4>
+<hr />
+<a class="btn btn-outline-dark" style="width:auto" asp-action="Create" asp-controller="Employee">Dodaj pracownika</a>
+<br />
+
+<div class="card-deck">
+
+    @foreach (var employee in Model)
+    {
+        var photoPath = "~/Images/" + (employee.PhotoPath ?? "img_6.jpg");
+
+        @*<div class="card m-3" style="min-width: 16rem; max-width: 30.5%;">*@
+        <div class="card m-3" style="min-width: 15rem; max-width: 30.0%;">
+            <div class="card-body">
+                @if (employee.Specialty != "Asystentka")
+                {
+                    <h5 class="card-title">@employee.Specialty</h5>
+                    <h5 class="card-title">lek. @employee.FirstName @employee.LastName</h5>
+                    <hr />
+                }
+                else
+                {
+                    <h5 class="card-title">@employee.Specialty</h5>
+                    <h5 class="card-title">@employee.FirstName @employee.LastName</h5>
+                    <hr />
+                }
+            </div>
+
+            <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
+            <div class="card-footer text-center">
+
+                <a asp-controller="Employee" asp-action="Details" asp-route-id="@employee.EmployeeID" class="btn btn-outline-primary btn-sm">Podgląd</a>
+                <a asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.EmployeeID" class="btn btn-outline-primary btn-sm">Edytuj</a>
+                <a asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.EmployeeID" class="btn btn-outline-danger btn-sm"
+                   onclick="return confirm('Czy na pewno chcesz usunąć lekarza: @employee.FirstName @employee.LastName ?')">Usuń</a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Appointment>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<html>
+<body>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Wizyta</th>
+                <th scope="col">Lekarz</th>
+                <th scope="col">Email pacjenta</th>
+                <th scope="col">Start wizyty </th>
+                <th scope="col">Koniec wizyty </th>
+                <th scope="col">Co chcesz zrobić? </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Dla każdego obiektu wizyty w Modelu-->
+            @foreach (var appointment in Model)
+            {
+                <tr>
+                    <td>@appointment.AppointmentID</td>
+                    <td>@appointment.EmployeeID</td>
+                    <td>@appointment.UserName</td>
+                    <td>@appointment.AppointmentStart</td>
+                    <td>@appointment.AppointmentFinish</td>
+                    <td>
+                        <a class="btn btn-outline-secondary btn-sm" asp-controller="Appointment" asp-action="EditAppointment" asp-route-id="@appointment.AppointmentID">Edytuj</a><font color="white">|</font>
+                        <a class="btn btn-outline-secondary btn-sm" asp-controller="Appointment" asp-action="DetailAppointment" asp-route-id="@appointment.AppointmentID">Szczegóły</a><font color="white">|</font>
+                        <a asp-controller="Appointment" asp-action="DeleteAppointment" asp-route-id="@appointment.AppointmentID" class="btn btn-outline-danger btn-sm"
+                           onclick="return confirm('Czy na pewno chcesz usunąć wizytę: @appointment.AppointmentID ?')">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+
+
