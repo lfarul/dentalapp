@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Dental_App.DataContext;
 using Dental_App.Models;
 using Dental_App.Repositories;

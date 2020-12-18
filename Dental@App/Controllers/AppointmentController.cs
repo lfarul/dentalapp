@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dental_App.DataContext;
@@ -20,18 +19,20 @@ namespace Dental_App.Controllers
         private readonly IAppointmentRepository _appointmentRepository;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
         public AppointmentController(IAppointmentRepository appointmentRepository, IEmployeeRepository employeeRepository,
-            UserManager<ApplicationUser> userManager, ApplicationDbContext context)
+            UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
         {
             _appointmentRepository = appointmentRepository;
             _employeeRepository = employeeRepository;
             _userManager = userManager;
+            _signInManager = signInManager;
             _context = context;
         }
 
         // Tutaj wyświetlam wszystkie wizyty
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         public ViewResult GetAllAppointments()
         {
             var model = _appointmentRepository.GetAllAppointments()
@@ -164,13 +165,16 @@ namespace Dental_App.Controllers
         // Tutaj wyświetlają się wizyty tylko dla zalogowanego pacjenta
         public async Task<IActionResult> MyAppointment(int id)
         {
-            ApplicationUser user = await GetCurrentUserAsync();
-            var appointment = _appointmentRepository.GetAllAppointments()
-                .Where(p => p.UserName == user.UserName)
-                .OrderByDescending(p => p.AppointmentStart);
+            {
+                ApplicationUser user = await GetCurrentUserAsync();
+                var appointment = _appointmentRepository.GetAllAppointments()
+                    .Where(p => p.UserName == user.UserName)
+                    .OrderByDescending(p => p.AppointmentStart);
 
-            ViewBag.TerazJest = DateTime.Now;
-            return View(appointment);
+                ViewBag.TerazJest = DateTime.Now;
+                return View(appointment);
+            }
+
         }
 
 
@@ -241,8 +245,21 @@ namespace Dental_App.Controllers
                 }
 
                 _appointmentRepository.Update(appointment);
-  
-                return RedirectToAction("MyAppointment");
+
+                if (_signInManager.IsSignedIn(User) && !(User.IsInRole("Admin")) && !(User.IsInRole("Lekarz")))
+                {
+                    return RedirectToAction("MyAppointment");
+                }
+
+                else if (_signInManager.IsSignedIn(User) && User.IsInRole("Lekarz"))
+                {
+                    return RedirectToAction("DoctorAppointment");
+                }
+
+                else if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("GetAllAppointments");
+                }
             }
             return View();
         }

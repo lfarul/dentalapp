@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Dental_App.DataContext;
 using Dental_App.Models;
 using Dental_App.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,11 +26,11 @@ namespace Dental_App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<ApplicationDbContext>(options =>
-            options.UseSqlServer(_configuration.GetConnectionString("DentalAppConnection")));
+            options.UseMySql(_configuration.GetConnectionString("DentalAppConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-                options.Password.RequiredLength = 10;
+                options.Password.RequiredLength = 9;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireDigit = true;
@@ -49,17 +44,7 @@ namespace Dental_App
             services.AddMvc().AddXmlSerializerFormatters();
             services.AddScoped<IEmployeeRepository, EmployeeRepositoryImplementation > ();
             services.AddScoped<IAppointmentRepository, AppointmentRepositoryImplementation>();
-
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.Cookie.Name = "CookieName";
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-                options.AccessDeniedPath = "/Account/AccessDenied";
-                options.SlidingExpiration = true;
-            });
         }
-
-
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, Microsoft.AspNetCore.Hosting.IHostingEnvironment env)

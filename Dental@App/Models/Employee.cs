@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Dental_App.Models
 {
@@ -23,7 +20,6 @@ namespace Dental_App.Models
         [Required(ErrorMessage = "Please provide email")]
         [RegularExpression(@"^[a-zA-Z0-9_+.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", ErrorMessage = "This is not an appropriate email format.")]
         public string Email { get; set; }
-
         public string Description { get; set; }
 
         [Display(Name = "Photo")]

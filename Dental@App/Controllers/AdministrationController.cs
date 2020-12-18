@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dental_App.DataContext;
@@ -51,7 +50,8 @@ namespace Dental_App.Controllers
                     return RedirectToAction("ListRoles", "Administration");
                 }
 
-                foreach (IdentityError error in result.Errors)
+                //added .ToList()
+                foreach (IdentityError error in result.Errors.ToList())
                 {
                     ModelState.AddModelError("", error.Description);
                 }
@@ -81,7 +81,8 @@ namespace Dental_App.Controllers
                         return RedirectToAction("ListUsers");
                     }
 
-                    foreach (var error in result.Errors)
+                    //added .ToLIst()
+                    foreach (var error in result.Errors.ToList())
                     {
                         ModelState.AddModelError("", error.Description);
                     }
@@ -109,7 +110,8 @@ namespace Dental_App.Controllers
                         return RedirectToAction("ListRoles");
                     }
 
-                    foreach (var error in result.Errors)
+                    //added .ToList()
+                    foreach (var error in result.Errors.ToList())
                     {
 
                         ModelState.AddModelError("", error.Description);
@@ -190,14 +192,15 @@ namespace Dental_App.Controllers
                 {
                     return RedirectToAction("ListUsers");
                 }
-                foreach (var error in result.Errors)
+
+                //added .ToList()
+                foreach (var error in result.Errors.ToList())
                 {
                     ModelState.AddModelError("", error.Description);
                 }
 
                 return View(model);
             };
-
         }
 
 
@@ -218,7 +221,8 @@ namespace Dental_App.Controllers
                 RoleName = role.Name
             };
 
-            foreach (var user in _userManager.Users)
+            //added .ToList()
+            foreach (var user in _userManager.Users.ToList())
             {
                 if (await _userManager.IsInRoleAsync(user, role.Name))
                 {
@@ -249,7 +253,8 @@ namespace Dental_App.Controllers
                     return RedirectToAction("ListRoles");
                 }
 
-                foreach (var error in result.Errors)
+                //added .ToList()
+                foreach (var error in result.Errors.ToList())
                 {
                     ModelState.AddModelError("", error.Description);
                 }
@@ -273,7 +278,8 @@ namespace Dental_App.Controllers
 
             var model = new List<UserRoleViewModel>();
 
-            foreach (var user in _userManager.Users)
+            //added .ToList()
+            foreach (var user in _userManager.Users.ToList())
             {
                 var userRoleViewModel = new UserRoleViewModel
                 {
@@ -359,8 +365,9 @@ namespace Dental_App.Controllers
                 RoleID = role.Id,
                 RoleName = role.Name
             };
-
-            foreach (var user in _userManager.Users)
+            
+            //added .ToList()
+            foreach (var user in _userManager.Users.ToList())
             {
                 if (await _userManager.IsInRoleAsync(user, role.Name))
                 {
@@ -391,7 +398,8 @@ namespace Dental_App.Controllers
                     return RedirectToAction("ListRoles");
                 }
 
-                foreach (var error in result.Errors)
+                //added .ToList()
+                foreach (var error in result.Errors.ToList())
                 {
                     ModelState.AddModelError("", error.Description);
                 }

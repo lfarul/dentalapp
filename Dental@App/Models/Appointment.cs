@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Dental_App.Models
 {
@@ -25,7 +22,6 @@ namespace Dental_App.Models
         // podcza wizyty przyjmuje jeden lekarz
         public int EmployeeID { get; set; }
         public Employee Employee { get; set; }
-
         public string EmployeeEmail { get; set; }
 
     }
