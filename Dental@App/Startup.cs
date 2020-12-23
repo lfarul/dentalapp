@@ -26,7 +26,10 @@ namespace Dental_App
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<ApplicationDbContext>(options =>
-            options.UseMySql(_configuration.GetConnectionString("DentalAppConnection")));
+            options.UseMySql(_configuration.GetConnectionString("DentalAppConnection"),
+
+            //for transient failure
+            providerOptions => providerOptions.EnableRetryOnFailure()));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
