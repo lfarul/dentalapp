@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>DentalApp</RootNamespace>
     <UserSecretsId>2174864b-f2a9-4b27-9fc0-a5d00b9388c5</UserSecretsId>
   </PropertyGroup>
