@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\XUnitTestProject\\XUnitTestProject.csproj": {}
+    "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\XUnitTestProject\\XUnitTestProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj": {
+    "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\DentalApp\\DentalApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj",
-        "projectName": "Dental@App",
-        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj",
+        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\DentalApp\\DentalApp.csproj",
+        "projectName": "DentalApp",
+        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\DentalApp\\DentalApp.csproj",
         "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\obj\\",
+        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\DentalApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -116,14 +116,14 @@
         }
       }
     },
-    "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\XUnitTestProject\\XUnitTestProject.csproj": {
+    "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\XUnitTestProject\\XUnitTestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\XUnitTestProject\\XUnitTestProject.csproj",
+        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\XUnitTestProject\\XUnitTestProject.csproj",
         "projectName": "XUnitTestProject",
-        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\XUnitTestProject\\XUnitTestProject.csproj",
+        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\XUnitTestProject\\XUnitTestProject.csproj",
         "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\XUnitTestProject\\obj\\",
+        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\XUnitTestProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -145,8 +145,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj": {
-                "projectPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj"
+              "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\DentalApp\\DentalApp.csproj": {
+                "projectPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\DentalApp\\DentalApp.csproj"
               }
             }
           }

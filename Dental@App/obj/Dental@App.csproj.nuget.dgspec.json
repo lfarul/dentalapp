@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj": {}
+    "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\Dental@App\\Dental@App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj": {
+    "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\Dental@App\\Dental@App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj",
+        "projectUniqueName": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\Dental@App\\Dental@App.csproj",
         "projectName": "Dental@App",
-        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj",
+        "projectPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\Dental@App\\Dental@App.csproj",
         "packagesPath": "C:\\Users\\Łukasz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\obj\\",
+        "outputPath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\Dental@App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

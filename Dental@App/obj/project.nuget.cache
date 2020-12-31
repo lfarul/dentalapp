@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "htMJDTjZi/OTh4TYtmm9AzI70p8v8r4ZK12jMYjyVVH+X7GwbZ47qM4WT1f19mSZe1+T8P1orb74W2Z7WvAmQQ==",
+  "dgSpecHash": "uQOHCZZrO1CEd5+0kduof/yRI25w/RD960XfhE/iIXsuF4b5EhioYW+jAtZTlB4nLpe1kwdz4yeoZAVRCCvoZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\Dental@App\\Dental@App.csproj",
+  "projectFilePath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\Dental@App\\Dental@App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Łukasz\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Łukasz\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",

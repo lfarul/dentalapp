@@ -24,7 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "XUnitTestProject/1.0.0": {
         "dependencies": {
-          "Dental@App": "1.0.0",
+          "DentalApp": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Testing": "3.1.0",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "coverlet.collector": "1.2.0",
@@ -3235,7 +3235,7 @@
           "Microsoft.NET.Test.Sdk": "16.5.0"
         }
       },
-      "Dental@App/1.0.0": {
+      "DentalApp/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore.Relational": "3.1.10",
@@ -3247,10 +3247,10 @@
           "Rotativa.AspNetCore": "1.1.1"
         },
         "runtime": {
-          "Dental@App.dll": {}
+          "DentalApp.dll": {}
         },
         "compile": {
-          "Dental@App.dll": {}
+          "DentalApp.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery.Reference/3.1.0.0": {
@@ -6646,7 +6646,7 @@
       "path": "xunit.runner.visualstudio/2.4.0",
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
     },
-    "Dental@App/1.0.0": {
+    "DentalApp/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

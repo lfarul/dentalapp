@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Dental_App;
+using DentalApp;
 
 namespace XUnitTestProject
 {

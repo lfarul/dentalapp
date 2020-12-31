@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+JA6OuyTyBs623ewAfavEfVi++nF+luY1pWIqAi7bKhxAuK+frZmBOuIwKG2lReDqFzAqn5SqY0Ot8nlt8gJuw==",
+  "dgSpecHash": "MNuDnCtGHgaDJ2EjtX2kMrtDi0PIJnZtvi0cuSqhxTMAUTFwNM7czgG5ixIDYP+rwHZV8l4MWgU1dn42/z1u+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Łukasz\\source\\repos\\Dental@App\\XUnitTestProject\\XUnitTestProject.csproj",
+  "projectFilePath": "C:\\Users\\Łukasz\\source\\repos\\DentalApp\\XUnitTestProject\\XUnitTestProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Łukasz\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Łukasz\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
