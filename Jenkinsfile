@@ -12,28 +12,43 @@ pipeline {
 	    
 	  stage ('Restore packages') {
 	    steps {
-	       echo "Restoring packages...."
-	      bat "dotnet restore"
+	       echo 'Restoring packages....'
+	      bat 'dotnet restore'
 	     }
 	  }
 	       
 	  stage ('Clean') {
 	    steps {
-	      echo "Cleaning the output of the previous build...."
-	      bat "dotnet clean"
+	      echo 'Cleaning the output of the previous build....'
+	      bat 'dotnet clean'
 	    }
 	  }
+
+	  stage ('Add Migration') {
+	    steps {
+	      echo 'Adding migration....'
+	      bat 'dotnet add-migration JenkinsMigration'
+	    }
+	  }
+
+	  stage ('Update database') {
+	    steps {
+	      echo 'Updating database....'
+	      bat 'dotnet update-database'
+	    }
+	  }		  
+		  	  
 	    
 	  stage ('Build') {
 	    steps {
-	       echo "Building the project...."
+	       echo 'Building the project....'
 	       bat 'dotnet build --configuration Release'
 	    }
 	  }
 	    
 	    stage ('Test') {
 	      steps {
-	        echo "Testing the project...."
+	        echo 'Testing the project....'
 	        bat 'dotnet test'
 	    }
 	  }
@@ -41,14 +56,14 @@ pipeline {
 	        //framework-dependent publishing - czyli publikacja aplikacji zależnych od platformy //1 plik
 	    stage ('Publish framework-dependent') {
 	      steps {
-	        echo "Publishing framework-dependent application...."
+	        echo 'Publishing framework-dependent application....'
 	        bat 'dotnet publish -f netcoreapp3.1 -c Release --self-contained false'
 	    }
 	  }
 		  
 	    stage ('Run') {
 	      steps {
-	        echo "Running the project...."
+	        echo 'Running the project....'
 	        bat 'dotnet run -p ./DentalApp/DentalApp.csproj &'
 	    }
 	  }  
