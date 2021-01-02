@@ -60,12 +60,24 @@ pipeline {
 	    }
 	  }
 	  */
+		  // Buduje obraz Dockera dla Docker Registry 
+		  
+	stage("Build Docker image for Docker Hub"){
+		steps{
+			echo "Building Docker image for Docker Registry..."
+			// lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
+			sh 'docker build -t lfarul/dentalapp:${BUILD_NUMBER} .'
+		}
+	}
+		  /*
 	    stage ('Run') {
 	      steps {
 	        echo "Running the project...."
 	        bat 'dotnet run -p ./DentalApp/DentalApp.csproj'
 	    }
 	  }  
+	  
+	  */
 	    
 	}
 	}
