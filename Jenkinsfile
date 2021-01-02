@@ -27,7 +27,7 @@ pipeline {
 	  stage ('Add Migration') {
 	    steps {
 	      echo 'Adding migration....'
-	      bat 'dotnet add-migration JenkinsMigration'
+	      bat 'dotnet add-migration'
 	    }
 	  }
 
