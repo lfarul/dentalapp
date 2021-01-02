@@ -53,7 +53,7 @@ pipeline {
 	    }
 	  }  
 	}
-}
+    }
 	    /*
 	    //self-contained publishing - czyli publikacja aplikacji samowystarczalnej z całym środowiskiem uruchomieniowym dla win10-x64 // ponad 140 plików ok 90MB
 	    stage ('Publish self-contained') {
