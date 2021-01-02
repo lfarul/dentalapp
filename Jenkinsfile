@@ -1,8 +1,6 @@
 pipeline {	
-	  agent any
-	  
-	  stages {
-	 
+	  agent any	  
+	  stages { 
 	    /*
 	   stage ("Checkout") {
 	    steps {
@@ -11,24 +9,21 @@ pipeline {
 	    }
 	  }
 	  */
-	  
-	  
+	    
 	  stage ('Restore packages') {
 	    steps {
 	       echo "Restoring packages...."
 	      bat "dotnet restore"
 	     }
 	  }
-	    
-	    
+	       
 	  stage ('Clean') {
 	    steps {
 	      echo "Cleaning the output of the previous build...."
 	      bat "dotnet clean"
 	    }
 	  }
-	  
-	  
+	    
 	  stage ('Build') {
 	    steps {
 	       echo "Building the project...."
@@ -43,7 +38,6 @@ pipeline {
 	    }
 	  }
 		  
-	    
 	        //framework-dependent publishing - czyli publikacja aplikacji zależnych od platformy //1 plik
 	    stage ('Publish framework-dependent') {
 	      steps {
