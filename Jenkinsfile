@@ -1,5 +1,5 @@
-pipeline {	
-	  agent any	  
+pipeline {
+	agent any	  
 	  stages { 
 	    /*
 	   stage ("Checkout") {
@@ -45,6 +45,15 @@ pipeline {
 	        bat 'dotnet publish -f netcoreapp3.1 -c Release --self-contained false'
 	    }
 	  }
+		  
+	    stage ('Run') {
+	      steps {
+	        echo "Running the project...."
+	        bat 'dotnet run -p ./DentalApp/DentalApp.csproj &'
+	    }
+	  }  
+	}
+}
 	    /*
 	    //self-contained publishing - czyli publikacja aplikacji samowystarczalnej z całym środowiskiem uruchomieniowym dla win10-x64 // ponad 140 plików ok 90MB
 	    stage ('Publish self-contained') {
@@ -54,6 +63,7 @@ pipeline {
 	    }
 	  }
 	  */
+		  /*
 		  // Buduje obraz Dockera dla Docker Registry 
 		stage("Build Docker image for Docker Hub"){
 		steps{
@@ -62,15 +72,6 @@ pipeline {
 			bat 'docker build -t lfarul/dentalapp:1 .'
 		}
 	}
-		  /*
-	    stage ('Run') {
-	      steps {
-	        echo "Running the project...."
-	        bat 'dotnet run -p ./DentalApp/DentalApp.csproj'
-	    }
-	  }  
-	  
-	  */
-	    
-	}
-	}
+	*/
+		  
+
