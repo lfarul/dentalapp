@@ -27,5 +27,9 @@ namespace DentalApp.Models
 
         // navigation properties - lekarz może mieć kilka wizyt
         public ICollection<Appointment> Appointments { get; set; }
+        
+        
+        [Display(Name = "Jenkins")]
+        public string Jenkins { get; set; }
     }
 }
