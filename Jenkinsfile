@@ -59,7 +59,7 @@ pipeline {
 		steps{
 			echo "Building Docker image for Docker Registry..."
 			// lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
-			bat 'docker build -t lfarul/DentalApp:${BUILD_NUMBER} .'
+			bat 'docker build -t lfarul/dentalapp:${BUILD_NUMBER} .'
 		}
 	}
 		  /*
