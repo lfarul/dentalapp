@@ -22,22 +22,7 @@ pipeline {
 	      echo 'Cleaning the output of the previous build....'
 	      bat 'dotnet clean'
 	    }
-	  }
-
-	  stage ('Add Migration') {
-	    steps {
-	      echo 'Adding migration....'
-	      bat 'dotnet ef migrations add'
-	    }
-	  }
-
-	  stage ('Update database') {
-	    steps {
-	      echo 'Updating database....'
-	      bat 'dotnet update-database'
-	    }
-	  }		  
-		  	  
+	  }	  	  	  
 	    
 	  stage ('Build') {
 	    steps {
