@@ -31,12 +31,14 @@ pipeline {
 	    }
 	  }
 	     */
+		  /*
 	    stage ('Test') {
 	      steps {
 	        echo 'Testing the project....'
 	        bat 'dotnet test'
 	    }
 	  }
+	  */
 		/*  
 	        //framework-dependent publishing - czyli publikacja aplikacji zależnych od platformy //1 plik
 	    stage ('Publish framework-dependent') {
