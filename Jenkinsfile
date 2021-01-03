@@ -8,7 +8,7 @@ pipeline {
 	      git credentialsId: 'git-creds', url: 'https://github.com/lfarul/dentalapp'
 	    }
 	  }
-	  */
+	  
 	    
 	  stage ('Restore packages') {
 	    steps {
@@ -30,14 +30,14 @@ pipeline {
 	       bat 'dotnet build --configuration Release'
 	    }
 	  }
-	    
+	     */
 	    stage ('Test') {
 	      steps {
 	        echo 'Testing the project....'
 	        bat 'dotnet test'
 	    }
 	  }
-		  
+		/*  
 	        //framework-dependent publishing - czyli publikacja aplikacji zależnych od platformy //1 plik
 	    stage ('Publish framework-dependent') {
 	      steps {
@@ -45,6 +45,7 @@ pipeline {
 	        bat 'dotnet publish -f netcoreapp3.1 -c Release --self-contained false'
 	    }
 	  }
+		   */
 		  // Buduje obraz Dockera dla Docker Registry 
 		  stage("Build Docker image for Docker Hub"){
 			  steps{
