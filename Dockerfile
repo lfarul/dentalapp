@@ -4,7 +4,7 @@ WORKDIR /app
 COPY DentalApp/*.csproj .
 RUN dotnet restore
 
-COPY . ./
+COPY DentalApp ./
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
