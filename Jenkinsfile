@@ -34,7 +34,7 @@ pipeline {
 	  stage ('Run') {
 	    steps {
 		    echo 'Running the project....'
-		    bat 'dotnet run -p ./Dental/Dental.csproj &'
+		    bat 'dotnet run -p ./DentalApp/DentalApp.csproj &'
 	    }
 	  }
 	}
